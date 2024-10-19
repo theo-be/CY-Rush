@@ -1,3 +1,33 @@
-[gd_scene format=3 uid="uid://gprrvwi4wpx4"]
+[gd_scene load_steps=5 format=3 uid="uid://gprrvwi4wpx4"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://j6ljcictv58n" path="res://resources/icon.svg" id="1_7klt2"]
+[ext_resource type="PackedScene" uid="uid://b2acn42s4skej" path="res://scenes/perso.tscn" id="2_e7f64"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkbwa"]
+size = Vector2(172, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83445"]
+size = Vector2(325, 88)
+
+[node name="monde" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(322, 115)
+shape = SubResource("RectangleShape2D_pkbwa")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(123, 104)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(195.5, 203)
+shape = SubResource("RectangleShape2D_83445")
+
+[node name="Icon" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(194.5, 200)
+scale = Vector2(2.53906, 0.71875)
+texture = ExtResource("1_7klt2")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_e7f64")]
+position = Vector2(264, 39)
