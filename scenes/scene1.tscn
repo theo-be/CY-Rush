@@ -1,33 +1,106 @@
-[gd_scene load_steps=5 format=3 uid="uid://gprrvwi4wpx4"]
+[gd_scene load_steps=10 format=3 uid="uid://gprrvwi4wpx4"]
 
-[ext_resource type="Texture2D" uid="uid://j6ljcictv58n" path="res://resources/icon.svg" id="1_7klt2"]
+[ext_resource type="Texture2D" uid="uid://bpiwlytnary43" path="res://images/chantier.png" id="1_sln48"]
 [ext_resource type="PackedScene" uid="uid://b2acn42s4skej" path="res://scenes/perso.tscn" id="2_e7f64"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkbwa"]
-size = Vector2(172, 41)
+[ext_resource type="Script" path="res://scenes/Camera2d.cs" id="3_sgk4s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83445"]
-size = Vector2(325, 88)
+size = Vector2(3592, 38)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_fpw8n"]
+a = Vector2(-123, -176)
+b = Vector2(-123, 544)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xqu71"]
+a = Vector2(3469, -176)
+b = Vector2(3469, 544)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sruiv"]
+size = Vector2(146, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0oo21"]
+size = Vector2(184, 306)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5w65s"]
+size = Vector2(293, 14)
 
 [node name="monde" type="Node2D"]
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(322, 115)
-shape = SubResource("RectangleShape2D_pkbwa")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="chantier" type="StaticBody2D" parent="."]
 position = Vector2(123, 104)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(195.5, 203)
+[node name="Chantier" type="Sprite2D" parent="chantier"]
+position = Vector2(1675, 181)
+texture = ExtResource("1_sln48")
+
+[node name="sol" type="CollisionShape2D" parent="chantier"]
+position = Vector2(1673, 524)
 shape = SubResource("RectangleShape2D_83445")
 
-[node name="Icon" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(194.5, 200)
-scale = Vector2(2.53906, 0.71875)
-texture = ExtResource("1_7klt2")
+[node name="bordG" type="CollisionShape2D" parent="chantier"]
+shape = SubResource("SegmentShape2D_fpw8n")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_e7f64")]
-position = Vector2(264, 39)
+[node name="bordD" type="CollisionShape2D" parent="chantier"]
+shape = SubResource("SegmentShape2D_xqu71")
+
+[node name="plateforme3" type="CollisionShape2D" parent="chantier"]
+position = Vector2(863, 348)
+shape = SubResource("RectangleShape2D_sruiv")
+
+[node name="plateforme7" type="CollisionShape2D" parent="chantier"]
+position = Vector2(1775, 278)
+shape = SubResource("RectangleShape2D_sruiv")
+
+[node name="plateforme2" type="CollisionShape2D" parent="chantier"]
+position = Vector2(749, 422.75)
+shape = SubResource("RectangleShape2D_sruiv")
+
+[node name="plateforme4" type="CollisionShape2D" parent="chantier"]
+position = Vector2(749, 422.75)
+shape = SubResource("RectangleShape2D_sruiv")
+
+[node name="plateforme5" type="CollisionShape2D" parent="chantier"]
+position = Vector2(1334, 422)
+shape = SubResource("RectangleShape2D_sruiv")
+
+[node name="plateforme6" type="CollisionShape2D" parent="chantier"]
+position = Vector2(1549, 363)
+shape = SubResource("RectangleShape2D_sruiv")
+
+[node name="plateforme1" type="CollisionShape2D" parent="chantier"]
+position = Vector2(308, 357.5)
+shape = SubResource("RectangleShape2D_sruiv")
+
+[node name="usine1H" type="CollisionShape2D" parent="chantier"]
+position = Vector2(1133, 31)
+shape = SubResource("RectangleShape2D_0oo21")
+
+[node name="usine1H2" type="CollisionShape2D" parent="chantier"]
+position = Vector2(2398, 119)
+shape = SubResource("RectangleShape2D_0oo21")
+
+[node name="usine1B" type="CollisionShape2D" parent="chantier"]
+position = Vector2(1137, 424)
+shape = SubResource("RectangleShape2D_0oo21")
+
+[node name="usine1B2" type="CollisionShape2D" parent="chantier"]
+position = Vector2(2398, 493)
+shape = SubResource("RectangleShape2D_0oo21")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chantier"]
+position = Vector2(2169.5, 344)
+shape = SubResource("RectangleShape2D_5w65s")
+
+[node name="player" parent="." instance=ExtResource("2_e7f64")]
+position = Vector2(14, 17)
+
+[node name="Camera" type="Camera2D" parent="player"]
+position = Vector2(546, 263)
+rotation = -2.09439
+limit_left = 0
+limit_top = -20
+limit_right = 3500
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+script = ExtResource("3_sgk4s")
