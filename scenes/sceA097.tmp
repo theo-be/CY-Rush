@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://gprrvwi4wpx4"]
+[gd_scene load_steps=9 format=3 uid="uid://gprrvwi4wpx4"]
 
 [ext_resource type="Texture2D" uid="uid://bpiwlytnary43" path="res://images/chantier.png" id="1_sln48"]
-[ext_resource type="PackedScene" uid="uid://cwhplct428a56" path="res://scenes/multiplayer.tscn" id="2_j23n0"]
-[ext_resource type="Script" path="res://scripts/multiplayer.gd" id="3_nea05"]
+[ext_resource type="PackedScene" uid="uid://d1rhmuhc3ocok" path="res://scenes/multiplayer_test.tscn" id="3_euy3k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83445"]
 size = Vector2(3592, 38)
@@ -103,10 +102,8 @@ shape = SubResource("RectangleShape2D_5w65s")
 position = Vector2(2609, 345)
 shape = SubResource("RectangleShape2D_5w65s")
 
-[node name="Multiplayerlocal" parent="." instance=ExtResource("2_j23n0")]
-script = ExtResource("3_nea05")
-player_scene = null
+[node name="Multiplayer_Test" parent="." instance=ExtResource("3_euy3k")]
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://scenes/basic_player.tscn")
-spawn_path = NodePath("../chantier")
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Multiplayer_Test"]
+_spawnable_scenes = PackedStringArray("res://scenes/perso.tscn")
+spawn_path = NodePath("../../chantier")
