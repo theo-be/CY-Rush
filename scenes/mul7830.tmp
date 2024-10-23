@@ -21,16 +21,15 @@ offset_right = 41.0
 offset_bottom = 120.0
 text = "Join"
 
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("..")
+
 [node name="Add_player" type="Button" parent="."]
 offset_left = 4.0
 offset_top = 135.0
 offset_right = 95.0
 offset_bottom = 166.0
 text = "Add Player"
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://scenes/basic_player.tscn")
-spawn_path = NodePath("..")
 
 [connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Join" to="." method="_on_join_pressed"]

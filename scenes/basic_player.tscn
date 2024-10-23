@@ -1,18 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://uy588shg5f5c"]
+[gd_scene load_steps=6 format=3 uid="uid://uy588shg5f5c"]
 
+[ext_resource type="Script" path="res://scripts/Perso_mvnt_rectiligne.cs" id="1_8f10j"]
 [ext_resource type="Texture2D" uid="uid://b8ovh6m6mjvsw" path="res://images/2915003117.webp" id="1_osmxb"]
-
-[sub_resource type="GDScript" id="GDScript_cl4sb"]
-script/source = "extends CharacterBody2D
-
-func _enter_tree() -> void:
-	set_multiplayer_authority(name.to_int())
-
-func _physics_process(delta: float) -> void:
-	if is_multiplayer_authority():
-		velocity = Input.get_vector(\"ui_left\",\"ui_right\",\"ui_up\",\"ui_down\")*400
-	move_and_slide()
-"
+[ext_resource type="Script" path="res://scripts/CameraController.cs" id="3_kqxjb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stt4f"]
 size = Vector2(26, 49)
@@ -23,16 +13,26 @@ properties/0/spawn = true
 properties/0/replication_mode = 1
 
 [node name="basic_player" type="CharacterBody2D"]
-script = SubResource("GDScript_cl4sb")
+position = Vector2(40, 149)
+script = ExtResource("1_8f10j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(343, 379.5)
+position = Vector2(33, 39.5)
 shape = SubResource("RectangleShape2D_stt4f")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_hhykb")
 
 [node name="2915003117" type="Sprite2D" parent="."]
-position = Vector2(343, 381)
+position = Vector2(33, 41)
 scale = Vector2(0.1625, 0.15625)
 texture = ExtResource("1_osmxb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(518, -105)
+scale = Vector2(-292.539, -243.303)
+limit_left = 0
+limit_top = 0
+limit_right = 3580
+limit_bottom = 640
+script = ExtResource("3_kqxjb")
