@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://gprrvwi4wpx4"]
+[gd_scene load_steps=12 format=3 uid="uid://gprrvwi4wpx4"]
 
 [ext_resource type="Texture2D" uid="uid://bpiwlytnary43" path="res://images/chantier.png" id="1_sln48"]
 [ext_resource type="PackedScene" uid="uid://b2acn42s4skej" path="res://scenes/perso.tscn" id="2_e7f64"]
@@ -17,6 +17,14 @@ b = Vector2(3469, 544)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sruiv"]
 size = Vector2(146, 14)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_k2vux"]
+a = Vector2(-336, 30)
+b = Vector2(-504, 185)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_tijw0"]
+a = Vector2(-136, -95)
+b = Vector2(-85, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0oo21"]
 size = Vector2(184, 306)
@@ -71,6 +79,14 @@ shape = SubResource("RectangleShape2D_sruiv")
 position = Vector2(308, 357.5)
 shape = SubResource("RectangleShape2D_sruiv")
 
+[node name="plateforme8" type="CollisionShape2D" parent="chantier"]
+position = Vector2(572, 321)
+shape = SubResource("SegmentShape2D_k2vux")
+
+[node name="plateforme9" type="CollisionShape2D" parent="chantier"]
+position = Vector2(12, 449)
+shape = SubResource("SegmentShape2D_tijw0")
+
 [node name="usine1H" type="CollisionShape2D" parent="chantier"]
 position = Vector2(1133, 31)
 shape = SubResource("RectangleShape2D_0oo21")
@@ -93,6 +109,7 @@ shape = SubResource("RectangleShape2D_5w65s")
 
 [node name="player" parent="." instance=ExtResource("2_e7f64")]
 position = Vector2(14, 17)
+maxJumps = 9
 
 [node name="Camera" type="Camera2D" parent="player"]
 position = Vector2(546, 263)
